@@ -9,6 +9,7 @@ import { ComponentProps, ReactNode } from 'react'
 import toast from 'react-hot-toast'
 import { Button } from './button'
 import { twMerge } from 'tailwind-merge'
+import { usePlayer } from '@/hooks/use-player'
 
 interface HeaderProps extends ComponentProps<'div'> {
   children: ReactNode
@@ -20,10 +21,13 @@ export function Header({ children, className }: HeaderProps) {
 
   const supabaseClient = useSupabaseClient()
   const { user } = useUser()
+  const player = usePlayer()
 
   async function handleLogout() {
     const { error } = await supabaseClient.auth.signOut()
-    // TODO: Reset any playing songs
+
+    player.reset()
+
     router.refresh()
 
     if (error) {

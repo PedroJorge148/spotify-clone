@@ -15,8 +15,8 @@ import Input from './form/input'
 const uploadSchema = z.object({
   title: z.string(),
   author: z.string(),
-  song: z.instanceof(FileList),
-  image: z.instanceof(FileList),
+  song: z.any(),
+  image: z.any(),
 })
 
 type UploadSchemaInputs = z.infer<typeof uploadSchema>
@@ -50,8 +50,6 @@ export function UploadModal() {
       onClose()
     }
   }
-
-  // console.log(errors)
 
   async function onUploadSubmit(data: UploadSchemaInputs) {
     try {

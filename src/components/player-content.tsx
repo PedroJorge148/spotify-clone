@@ -100,10 +100,7 @@ export function PlayerContent({ song, songUrl }: PlayerContentProps) {
         </div>
       </div>
       <div className="col-auto flex w-full items-center justify-end md:hidden">
-        <div
-          onClick={() => {}}
-          className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-white p-1"
-        >
+        <div className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-white p-1">
           <Icon
             strokeWidth={0}
             onClick={handlePlay}

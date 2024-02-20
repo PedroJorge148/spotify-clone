@@ -1,4 +1,5 @@
 import { useLoadImage } from '@/hooks/use-load-image'
+import { usePlayer } from '@/hooks/use-player'
 import { Song } from '@/types'
 import Image from 'next/image'
 
@@ -9,13 +10,14 @@ export interface MediaItemProps {
 
 export function MediaItem({ data, onClick }: MediaItemProps) {
   const imageUrl = useLoadImage(data)
+  const player = usePlayer()
 
   function handleClick() {
     if (onClick) {
       return onClick(data.id)
     }
 
-    // TODO: Default turn on player
+    player.setId(data.id)
   }
 
   return (
